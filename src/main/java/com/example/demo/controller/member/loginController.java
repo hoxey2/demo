@@ -99,8 +99,8 @@ public class loginController {
     @ResponseBody
     public String idCheck(@RequestBody String memberId){
         int length = memberId.length();
-        System.out.println("idCheck 호출됨, length 는 " + length);
-        System.out.println("memberId는 " + memberId);
+//        System.out.println("idCheck 호출됨, length 는 " + length);
+//        System.out.println("memberId는 " + memberId);
         String result = memberService.idCheck(memberId);
         return result;
     }
@@ -171,10 +171,10 @@ public class loginController {
 
         if(sessionMember!=null) {
             model.addAttribute("list",memberService.getList(cri));
-            System.out.println(memberService.totalCount());
+//            System.out.println(memberService.totalCount());
             PageDTO page = new PageDTO(cri, memberService.totalCount());
-            System.out.println(page.getStartPage());
-            System.out.println(page.getEndPage());
+//            System.out.println(page.getStartPage());
+//            System.out.println(page.getEndPage());
             model.addAttribute("pageMaker", page);
             return "/member/adminPage";
         }

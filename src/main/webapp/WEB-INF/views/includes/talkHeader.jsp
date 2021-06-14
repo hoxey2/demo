@@ -62,27 +62,25 @@
                 <li class="nav-item"><a href="/main" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="/board/list" class="nav-link">Board</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="/gallery/list" class="nav-link">Gallery</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">News</a></li>
                 <li class="nav-item"><a href="/room" class="nav-link">STockTalk</a></li>
                 <li class="nav-item active"><a href="/test" class="nav-link">Test</a></li>
                 <li class="dropdown nav-item"><a class="nav-link" data-toggle="dropdown" href="#">My Page <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="/myPage">내 정보 변경</a></li>
-                        <li><a href="/asset/get">내 자산 조회</a></li>
-                        <li><a href="/asset/register">자산 등록</a></li>
-                        <li><a href="/account/register">계좌 개설</a></li>
-                        <li><a href="/account/get">계좌 조회</a></li>
+                           <li><a href="/myPage">내 정보 변경</a></li>
+                           <li id="getBtn"><a href="/asset/get">내 자산 조회</a></li>
+                           <li id="regBtn"><a href="/asset/register">자산 등록</a></li>
+                           <li id="acRegBtn"><a href="/account/register">계좌 개설</a></li>
+                           <li id="acGetBtn"><a href="/account/get">계좌 조회</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a href="/" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="/memberLogout" class="nav-link">Logout</a></li>
+                           <li id="loginBtn" class="nav-item"><a href="/" class="nav-link">Login</a></li>
+                           <li id="logoutBtn" class="nav-item"><a href="/memberLogout" class="nav-link">Logout</a></li>
             </ul>
         </div>
     </div>
 </nav>
-
-
 
 <script type="text/javascript" src="/resources/js/check.js"></script>
 

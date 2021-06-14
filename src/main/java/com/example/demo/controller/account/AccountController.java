@@ -204,9 +204,16 @@ public class AccountController {
         //ajax가 postMApping 요청보내면, body에 요청정보를 넣어서 보낸다. 받을때 @RequestBody
         //System.out.println("입구컷?");
         String result = service.existenceChk(account_number);
-        //System.out.println(result);
+        System.out.println("result::" + result);
         return result;
     }
 
+    @PostMapping("accountChk")
+    @ResponseBody
+    public String accountChk(@RequestBody String memberId) {
+        System.out.println("memberId:"+ memberId);
+        String result1 = service.accountChk(memberId);
+        return result1;
+    }
 
 }

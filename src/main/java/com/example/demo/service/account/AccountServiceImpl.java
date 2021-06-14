@@ -1,6 +1,7 @@
 package com.example.demo.service.account;
 
 import com.example.demo.domain.account.AccountDTO;
+import com.example.demo.domain.asset.AssetVO;
 import com.example.demo.mapper.account.AccountMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,11 +64,20 @@ public class AccountServiceImpl implements AccountService{
 
         AccountDTO accountInfo = mapper.findAccountInfo(account_number);
 
-        //System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"+accountInfo);
 
         if (accountInfo!=null) {
             return "1";
         }
         return "0";
     }
+
+    @Override
+    public String accountChk(String memberId) {
+        AccountDTO accountInfo = mapper.findMemberAccountInfo(memberId);
+        if(accountInfo!=null){
+            return "1";
+        }
+        return "0";
+    }
 }
+

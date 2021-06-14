@@ -26,4 +26,34 @@ console.log(member_id);
                 console.log("fail");
                 }
             });
+
+console.log("!!!!!!!!!!!!check.js");
+
+
+console.log("memberId::"+member_id);
+ $.ajax({
+                url : '/account/accountChk',
+                type: 'POST',
+                data: member_id,
+                contentType : "application/json; charset=UTF-8",
+                success : function(result1){
+                console.log("result1::" + result1);
+
+                    if(result1 == '1'){
+                         $("#acRegBtn").remove();
+
+                    } else if(result1 == '0'){
+                         $("#acGetBtn").remove();
+                    }
+                },
+                error: function(){
+                console.log("fail");
+                }
+            });
+
+                if(member_id == null ) {
+                    $("#logoutBtn").remove();
+                }else if(member_id != null ) {
+                    $("#loginBtn").remove();
+                }
 }

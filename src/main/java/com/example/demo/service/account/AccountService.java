@@ -20,4 +20,6 @@ public interface AccountService {
 
     public String existenceChk(String account_number);
 
+    public String accountChk(String memberId);
+
 }

@@ -26,4 +26,6 @@ public interface AccountMapper {
 
     public AccountDTO findAccountInfo(String account_number);
 
+    public AccountDTO findMemberAccountInfo(String memberId);
+
 }
