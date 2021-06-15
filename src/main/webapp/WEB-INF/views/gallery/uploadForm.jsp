@@ -11,7 +11,7 @@
 
 <form action="uploadFormAction" method="post" enctype="multipart/form-data">
 
-<input type='file' name='uploadFile' multiple>
+<input type="file" id='upload' name="uploadFile" accept="image/*" />
 
 <button>Submit</button>
 

@@ -220,10 +220,10 @@
     <!-- /.panel -->
     <div class="panel panel-default">
       
-      <div class="panel-heading">
+    <!--  <div class="panel-heading">
         <i class="fa fa-comments fa-fw"></i> Reply
         <button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>New Reply</button>
-      </div>      
+      </div>  -->
       
       
       <!-- /.panel-heading -->

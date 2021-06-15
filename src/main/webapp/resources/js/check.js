@@ -51,9 +51,9 @@ console.log("memberId::"+member_id);
                 }
             });
 
-                if(member_id == null ) {
-                    $("#logoutBtn").remove();
-                }else if(member_id != null ) {
-                    $("#loginBtn").remove();
-                }
+    if(member_id == null ) {
+        $("#logoutBtn").remove();
+    }else if(member_id != null ) {
+        $("#loginBtn").remove();
+    }
 }

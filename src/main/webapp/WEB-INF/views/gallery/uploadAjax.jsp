@@ -62,7 +62,7 @@
 
 
 	<div class='uploadDiv'>
-		<input type='file' name='uploadFile' multiple>
+		<input type="file" id='upload' name="uploadFile" accept="image/*" />
 	</div>
 
 
@@ -128,9 +128,16 @@
 
 
 //정규식 이용해서 파일 확장자 체크하고 - 차단
-		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+        var imgFile = $('#upload').val();
+		var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$");
 		var maxSize = 5242880; //5MB
 
+//파일첨부 확인
+
+            if ($('#upload').val() == "") {
+                alert("사진을 첨부해주세요.");
+                $("#upload").focus();
+                return;
 //함수생성
 		function checkExtension(fileName, fileSize) {
 
