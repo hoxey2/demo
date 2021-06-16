@@ -160,6 +160,7 @@ public class UploadController {
     @ResponseBody
     public ResponseEntity<byte[]> getFile(String fileName) {
 
+        System.out.println("fileName!!!!!!!!!!!!!!!!!!" + fileName);
         File file = new File("c:\\upload\\" + fileName);
 
         ResponseEntity<byte[]> result = null;

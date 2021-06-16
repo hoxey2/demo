@@ -185,7 +185,7 @@
       <!-- /.panel-heading -->
       <div class="panel-body">
         <div class="form-group uploadDiv">
-            <input type="file" id='upload' name="uploadFile" accept="image/*" />
+            <input type="file" id="uploadFile" name="uploadFile" accept="image/*" />
         </div>
         
         <div class='uploadResult'> 
@@ -324,7 +324,7 @@ $(document).ready(function() {
     }
   });  
   
-  var imgFile = $('#uploadFile').val();
+  var imgFile;
   var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$");
   var maxSize = 5242880; //5MB
 
@@ -336,16 +336,17 @@ $(document).ready(function() {
           }
 
       if (imgFile != "" && imgFile != null) {
-          fileSize = document.getElementById("uploadFile").files[0].size;
-
-      if (imgFile.test(regex)){
-        alert("해당 종류의 파일은 업로드할 수 없습니다.");
-        return;
-      } else if(fileSize >= maxSize){
-             alert("파일 사이즈 초과");
-             return;
-           }
-    }
+              fileSize = document.getElementById("uploadFile").files[0].size;
+              console.log(regex.test(imgFile));
+              if (!regex.test(imgFile)){
+                  alert("해당 종류의 파일은 업로드할 수 없습니다.");
+                  return;
+              } else if(fileSize >= maxSize){
+                  alert("파일 사이즈 초과");
+                  return;
+              }
+          }
+        }
   
   $("input[type='file']").change(function(e){
 

@@ -25,7 +25,7 @@
 					<div class="project">
 						<c:set var="display" value="/display?fileName="></c:set>
 
-						<img src="${display}${file.fileUrl}" onerror="this.src='resources/img/file.png'" class="img-fluid"  style="height:400px;width:100%;"/>
+						<img src="${display}${file.fileUrl}" class="img-fluid"  style="height:400px;width:100%;"/>
 						<div class="text">
                             <a href="get?bno=${file.bno}" style="color:white; font-size:2.0em; font-weight:bold;">${file.title}</a> <br>
 						    <a href="get?bno=${file.bno}" style="color:white;" >${file.writer}</a>

@@ -62,7 +62,7 @@
 
 
 	<div class='uploadDiv'>
-		<input type="file" id='upload' name="uploadFile" accept="image/*" />
+		<input type="file" id="uploadFile" name="uploadFile" accept="image/*" />
 	</div>
 
 
@@ -84,7 +84,7 @@
 	function showImage(fileCallPath){
 	  
 	  //alert(fileCallPath);
-//원본이미지를 보여줄때 스르륵 커지게 하는 / flex -자동위치 기본 레이아웃 속성
+    //원본이미지를 보여줄때 스르륵 커지게 하는 / flex -자동위치 기본 레이아웃 속성
 	  $(".bigPictureWrapper").css("display","flex").show();
 	  
 	  $(".bigPicture")
@@ -104,14 +104,14 @@
 	  
 	});
 
-//span - x를 클릭하면 	
+    //span - x를 클릭하면
 	$(".uploadResult").on("click","span", function(e){
 	   
 	  var targetFile = $(this).data("file");
 	  var type = $(this).data("type");
 	  console.log(targetFile);
 
-//삭제 를 누르면 페이지내 그 부분만 처리할 수 있도록
+    //삭제 를 누르면 페이지내 그 부분만 처리할 수 있도록
 	  $.ajax({
 	    url: '/deleteFile',
 	    data: {fileName: targetFile, type:type},
@@ -127,17 +127,16 @@
 
 
 
-//정규식 이용해서 파일 확장자 체크하고 - 차단
-        var imgFile = $('#uploadFile').val();
+    //정규식 이용해서 파일 확장자 체크하고 - 차단
+        var imgFile;
         var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$");
         var maxSize = 5242880; //5MB
 
 
-
-//함수생성
+    //함수생성
 		function checkExtension(fileName, fileSize) {
 
-//파일첨부 확인
+    //파일첨부 확인
 
             if ($('#uploadFile').val() == "") {
                alert("사진을 첨부해주세요.");
@@ -145,33 +144,29 @@
                return;
             }
 
-//파일 사이즈 체크
+    //파일 체크
 			if (imgFile != "" && imgFile != null) {
                     fileSize = document.getElementById("uploadFile").files[0].size;
 
-                if (imgFile.test(regex)){
-                  alert("해당 종류의 파일은 업로드할 수 없습니다.");
-                  return;
-                } else if(fileSize >= maxSize){
-                       alert("파일 사이즈 초과");
-                       return;
-                     }
+                    console.log(regex.test(imgFile));
 
-//파일 확장자 체크
-			if (regex.test(fileName)) {
-				alert("해당 종류의 파일은 업로드할 수 없습니다.");
-				return false;
-			}
-			return true;
-		}
+                    if (!regex.test(imgFile)){
+                        alert("해당 종류의 파일은 업로드할 수 없습니다.");
+                        return;
+                    } else if(fileSize >= maxSize){
+                        alert("파일 사이즈 초과");
+                        return;
+                    }
+                }
+            }
 
-//Ajax를 사용하면 화면의 이동없이
+    //Ajax를 사용하면 화면의 이동없이
 		var cloneObj = $(".uploadDiv").clone();
 
 		$("#uploadBtn").on("click", function(e) {
 
 			var formData = new FormData();
-//가상데이터 폼에 해당
+    //가상데이터 폼에 해당
 			var formData = new FormData();
 
 			var inputFile = $("input[name='uploadFile']");
@@ -191,7 +186,7 @@
 			}
 
 
-//upload버튼을 눌렀을때
+    //upload버튼을 눌렀을때
 			$.ajax({
 				url : '/uploadAjaxAction',
 				processData : false,    //파일을 전송할때 필요한 설정
@@ -225,22 +220,22 @@
      if(!obj.image){
        
        var fileCallPath =  encodeURIComponent( obj.uploadPath+"/"+ obj.uuid +"_"+obj.fileName);
-//파일 링크로 처리하겠다     
+    //파일 링크로 처리하겠다
        var fileLink = fileCallPath.replace(new RegExp(/\\/g),"/");
-//일반 파일이름 누르면 다운로드 가능(파일은 파일 아이콘을 붙여줌)
+    //일반 파일이름 누르면 다운로드 가능(파일은 파일 아이콘을 붙여줌)
        str += "<li><div><a href='/download?fileName="+fileCallPath+"'>"+
            "<img src='/resources/img/attach.png'>"+obj.fileName+"</a>"+
            "<span data-file=\'"+fileCallPath+"\' data-type='file'> x </span>"+
            "<div></li>"
        //x를 누르면 삭제
      }else{
-// 이미지는 썸네일 썸네일 누르면 원본 크기      
+    // 이미지는 썸네일 썸네일 누르면 원본 크기
        var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);
        
        var originPath = obj.uploadPath+ "\\"+obj.uuid +"_"+obj.fileName;
        
        originPath = originPath.replace(new RegExp(/\\/g),"/");
- //링크를 설정하고 누르면 원본이미지를 표시하게
+    //링크를 설정하고 누르면 원본이미지를 표시하게
        str += "<li><a href=\"javascript:showImage(\'"+originPath+"\')\">"+
               "<img src='display?fileName="+fileCallPath+"'></a>"+
               "<span data-file=\'"+fileCallPath+"\' data-type='image'> x </span>"+
