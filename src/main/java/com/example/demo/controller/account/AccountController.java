@@ -211,7 +211,7 @@ public class AccountController {
     @PostMapping("accountChk")
     @ResponseBody
     public String accountChk(@RequestBody String memberId) {
-        System.out.println("memberId:"+ memberId);
+//        System.out.println("memberId:"+ memberId);
         String result1 = service.accountChk(memberId);
         return result1;
     }

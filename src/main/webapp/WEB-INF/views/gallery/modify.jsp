@@ -324,28 +324,28 @@ $(document).ready(function() {
     }
   });  
   
-  var imgFile = $('#upload').val();
+  var imgFile = $('#uploadFile').val();
   var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$");
   var maxSize = 5242880; //5MB
 
   function checkExtension(fileName, fileSize){
+      if ($('#uploadFile').val() == "") {
+          alert("사진을 첨부해주세요.");
+          $("#uploadFile").focus();
+          return;
+          }
 
-    if ($('#upload').val() == "") {
-        alert("사진을 첨부해주세요.");
-        $("#upload").focus();
+      if (imgFile != "" && imgFile != null) {
+          fileSize = document.getElementById("uploadFile").files[0].size;
+
+      if (imgFile.test(regex)){
+        alert("해당 종류의 파일은 업로드할 수 없습니다.");
         return;
-    
-    if(fileSize >= maxSize){
-      alert("파일 사이즈 초과");
-      return false;
+      } else if(fileSize >= maxSize){
+             alert("파일 사이즈 초과");
+             return;
+           }
     }
-    
-    if(regex.test(fileName)){
-      alert("해당 종류의 파일은 업로드할 수 없습니다.");
-      return false;
-    }
-    return true;
-  }
   
   $("input[type='file']").change(function(e){
 

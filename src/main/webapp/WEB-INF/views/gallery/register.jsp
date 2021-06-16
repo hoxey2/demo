@@ -158,23 +158,20 @@
   <!-- end panel -->
 </div>
 <!-- /.row -->
-
 <script>
-
 $(document).ready(function(e){
 
 	/* 
-  var formObj = $("form[role='form']");
-  
-  $("button[type='submit']").on("click", function(e){
-    
-    e.preventDefault();
-    
-    console.log("submit clicked");
-    
-  }); */
+      var formObj = $("form[role='form']");
 
-  
+      $("button[type='submit']").on("click", function(e){
+
+        e.preventDefault();
+
+        console.log("submit clicked");
+      });
+    */
+
   var formObj = $("form[role='form']");
   
   $("button[type='submit']").on("click", function(e){
@@ -193,48 +190,45 @@ $(document).ready(function(e){
       console.log("-------------------------");
       console.log(jobj.data("filename"));
       
- //파일을 선택했을때 파일 업로드 처리   히든으로 첨부파일의 정보들이  보드 VO FielList에 수집됨
+        //파일을 선택했을때 파일 업로드 처리   히든으로 첨부파일의 정보들이  보드 VO FielList에 수집됨
       str += "<input type='hidden' name='fileList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
       str += "<input type='hidden' name='fileList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
       str += "<input type='hidden' name='fileList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
       str += "<input type='hidden' name='fileList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
-      
     });
     
     console.log(str);
     
     formObj.append(str).submit();
-    
   });
 
-  var imgFile = $('#uploadFile').val();
+  var imgFile;
   var regex = new RegExp("(.*?)\.(jpg|jpeg|png|gif|bmp|pdf)$");
   var maxSize = 5242880; //5MB
 
   function checkExtension(fileName, fileSize){
-
     if ($('#uploadFile').val() == "") {
         alert("사진을 첨부해주세요.");
         $("#uploadFile").focus();
         return;
-    
-    if(fileSize >= maxSize){
-      alert("파일 사이즈 초과");
-      return false;
     }
 
     if (imgFile != "" && imgFile != null) {
         fileSize = document.getElementById("uploadFile").files[0].size;
-
-    if (imgFile.match(fileForm)){
-      alert("해당 종류의 파일은 업로드할 수 없습니다.");
-      return false;
+        console.log(regex.test(imgFile));
+        if (!regex.test(imgFile)){
+            alert("해당 종류의 파일은 업로드할 수 없습니다.");
+            return;
+        } else if(fileSize >= maxSize){
+            alert("파일 사이즈 초과");
+            return;
+        }
     }
-    return true;
   }
-  
-  $("input[type='file']").change(function(e){
 
+  $("input[type='file']").change(function(e){
+    imgFile = $('#uploadFile').val();
+    console.log('imgFile is : ' + imgFile);
     var formData = new FormData();
     
     var inputFile = $("input[name='uploadFile']");
@@ -242,13 +236,12 @@ $(document).ready(function(e){
     var files = inputFile[0].files;
     
     for(var i = 0; i < files.length; i++){
-//확장자 체크
+      //확장자 체크
       if(!checkExtension(files[i].name, files[i].size) ){
         return false;
       }
- //가상의 데이타
+      //가상의 데이타
       formData.append("uploadFile", files[i]);
-      
     }
     
     $.ajax({
@@ -261,11 +254,9 @@ $(document).ready(function(e){
       //성공시 콘솔에 출력   
       success: function(result){
           console.log(result); 
-		  showUploadResult(result); //업로드 결과 처리 함수 
-
+		  showUploadResult(result); //업로드 결과 처리 함수
       }
     }); //$.ajax
-    
   });  
   
   function showUploadResult(uploadResultArr){
@@ -324,13 +315,11 @@ $(document).ready(function(e){
 			str += "</div>";
 			str +"</li>";
 		}
-
     });
-    
     uploadUL.append(str);
   }
   //button 삭제버튼 - <button type='button' data-file=\'"+fileCallPath+"\' data-type='file' " 
-//			str += "class='btn btn-warning btn-circle'> 
+  //str += "class='btn btn-warning btn-circle'>
 
   $(".uploadResult").on("click", "button", function(e){
 	    
@@ -340,7 +329,7 @@ $(document).ready(function(e){
     var type = $(this).data("type");
     
     var targetLi = $(this).closest("li");
-//삭제   화면에서 삭제
+    //삭제   화면에서 삭제
     $.ajax({
       url: '/deleteFile',
       data: {fileName: targetFile, type:type},
@@ -352,12 +341,8 @@ $(document).ready(function(e){
            targetLi.remove();
          }
     }); //$.ajax
-   });
-
-
-  
+  });
 });
-
 </script>
 
 <%@include file="../includes/boardFooter.jsp"%>

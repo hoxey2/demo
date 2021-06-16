@@ -57,7 +57,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 
-				<button id='regBtn' type="button" class="btn btn-xs pull-right">    Write !  </button>
+				<button id='regBtn' type="button" class="btn btn-xs pull-right">   Write !  </button>
 			</div>
 
 			<!-- /.panel-heading -->

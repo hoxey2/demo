@@ -16,10 +16,10 @@ console.log(member_id);
                 console.log("result::" + result);
 
                     if(result == '1'){
-                         $("#regBtn").remove();
+                         $("#asRegBtn").remove();
 
                     } else if(result == '0'){
-                         $("#getBtn").remove();
+                         $("#asGetBtn").remove();
                     }
                 },
                 error: function(){
